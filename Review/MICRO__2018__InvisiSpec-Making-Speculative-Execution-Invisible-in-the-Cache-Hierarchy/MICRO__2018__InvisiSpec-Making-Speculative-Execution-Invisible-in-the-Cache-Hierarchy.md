@@ -4,7 +4,7 @@
 
 * Title: InvisiSpec: Making Speculative Execution Invisible in the Cache Hierarchy
 * Authors: Mengjia Yan, Jiho Choi, Dimitrios Skarlatos, Adam Morrison, Christopher Fletcher, Josep Torrellas
-* Venue:
+* Venue: MICRO 2018
 * Keywords: hardware security, speculation, side channel, memory hierarchy
 
 # Paper content
