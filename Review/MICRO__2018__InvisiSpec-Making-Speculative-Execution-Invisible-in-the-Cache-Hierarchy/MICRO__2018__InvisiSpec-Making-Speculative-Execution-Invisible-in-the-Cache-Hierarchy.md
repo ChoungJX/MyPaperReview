@@ -34,10 +34,10 @@ Key mechanisms:
 - **Speculative Buffer (SB) in L1 cache** stores values for USLs until they become safe.
 
   SB consists of *Load Queue entries* and *Speculative Buffer entries*, and there is a one-to-one mapping between LQ and SB entries. LQ store addresses the USLs needed and the Status Bit needed by the later operation. Each SB entry stores one cache line and an address mask specified by its LQ entry to state which value is needed by USL.
-- ***Spec-GetS* transactions** get copies of cache lines without changing the cache hierarchy state.
+- **Spec-GetS transactions** get copies of cache lines without changing the cache hierarchy state.
 
   The standard coherence transaction could change the cache hierarchy state, which would create side channels. Therefore, *InvisiSpec* introduces a new transaction called *Spec-GetS* to avoid the cache hierarchy state changed when putting cache value copies into SB. *Spec-GetS* requests a copy of a cache line from the owner that owns this cache line. If this owner lost ownership when this request reached, *Spec-GetS* could request again until it gets the copy or its USL becomes safe then switch to the standard transaction.
-- ***Validation* or *Exposure* of a USL** makes a USL visible and maintains memory consistency.
+- **Validation or Exposure of a USL** makes a USL visible and maintains memory consistency.
 
   If a USL needs *Validation*, it could have violated the memory consistency while it was in the invisible state. There are different standards of judgment for different memory consistency models to judge if a USL needs *Validation*.
   - In *Total Store Order* (TSO) model, it only allows *store* --> *load* reordering.
@@ -70,7 +70,7 @@ Key mechanisms:
 
 Almost all methods of defending against *Speculative Execution Attacks* will reduce the execution performance included *InvisiSpec*. However, *InvisiSpec* alleviates the execution slowdown by some mechanisms.
 
-- **reusing the *Speculative Buffer***
+- **reusing the Speculative Buffer**
 
   If a USL requests a cache line from the cache hierarchy, but this cache line has been stored into another SB entry, it just copies this cache line from that SB entry.
 - **Overlapping Validations and Exposures**
